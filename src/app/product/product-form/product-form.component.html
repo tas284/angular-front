@@ -1,0 +1,53 @@
+<div class="row inline">
+    <div class="col s11">
+        <h3>Register new Product</h3>
+    </div>
+    <div class="col s1" style="margin-top: 3rem;">
+        <a (click)="goToProducts()" class="btn-floating btn waves-effect deep-orange right"><i
+                class="material-icons">arrow_back</i></a>
+    </div>
+</div>
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="input-field col s6">
+            <label for="name" class="active">Name</label>
+            <input class="form-control" id="name" type="text" formControlName="name">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="price" class="active">Price</label>
+            <input class="form-control" id="price" type="text" formControlName="price">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <label for="quantity" class="active">Quantity</label>
+            <input class="form-control" id="quantity" type="text" formControlName="quantity">
+        </div>
+
+        <div class="input-field col s6">
+            <label for="brand" class="active">Brand</label>
+            <input class="form-control" id="brand" type="text" formControlName="brand">
+        </div>
+    </div>
+
+    <div class="row">
+        <button class="btn waves-effect waves-light right" 
+        type="submit" name="submit">Save
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>Form Status: {{ form.status }}</p>
+        </div>
+        <div class="panel-body">
+            <pre>
+            {{ form.value | json }}
+        </pre>
+        </div>
+    </div>
+</form>
