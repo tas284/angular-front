@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.6.
 
 ## Requirments
-Depends on this project:
+Depends on this project for run Backend:
 https://github.com/tas284/AspNet
 
 ## Development server
