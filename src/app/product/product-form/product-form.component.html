@@ -1,8 +1,9 @@
 <div class="row inline">
     <div class="col s11">
-        <h3>Register new Product</h3>
+        <h4>{{ title }}</h4>
+        <i>{{ name }}</i>
     </div>
-    <div class="col s1" style="margin-top: 3rem;">
+    <div class="col s1" style="margin-top: 2rem;">
         <a (click)="goToProducts()" class="btn-floating btn waves-effect deep-orange right"><i
                 class="material-icons">arrow_back</i></a>
     </div>
@@ -15,8 +16,8 @@
         </div>
 
         <div class="input-field col s6">
-            <label for="price" class="active">Price</label>
-            <input class="form-control" id="price" type="text" formControlName="price">
+            <label for="brand" class="active">Brand</label>
+            <input class="form-control" id="brand" type="text" formControlName="brand">
         </div>
     </div>
 
@@ -27,15 +28,29 @@
         </div>
 
         <div class="input-field col s6">
-            <label for="brand" class="active">Brand</label>
-            <input class="form-control" id="brand" type="text" formControlName="brand">
+            <label for="price" class="active">Price</label>
+            <input class="form-control" id="price" type="text" formControlName="price">
         </div>
     </div>
 
     <div class="row">
-        <button class="btn waves-effect waves-light right" 
-        type="submit" name="submit">Save
-            <i class="material-icons right">send</i>
-        </button>
+        <div class="input-field col s6">
+            <label for="stockValue" class="active">Stock Value R$</label>
+            <input class="form-control" id="stockValue" type="number" formControlName="stockValue">
+        </div>
+        <div class="input-field col s6">
+            <button class="btn waves-effect waves-light right" type="submit" name="submit">Save
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
     </div>
 </form>
+
+<ng-template>
+    <div *ngIf="message$ | async">
+        <p>Error to loading products, contact us!</p>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+</ng-template>

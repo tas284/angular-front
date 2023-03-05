@@ -2,9 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/internal/operators/map';
-import { switchMap } from 'rxjs/internal/operators/switchMap';
-import { Product } from '../product';
+import { Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -15,6 +13,11 @@ import { ProductService } from '../product.service';
 export class ProductFormComponent implements OnInit {
 
   form!: FormGroup;
+  message$!: Subject<boolean>;
+  title: string = 'Register new Product';
+  name: string = '';
+  msgSuccess!: string;
+  msgError!: string;
 
   constructor(
     private service: ProductService,
@@ -26,24 +29,11 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.route.params
-    //   .pipe(
-    //     map((params: any) => params['id']),
-    //     switchMap(id => this.service.loadByID(id))
-    //   )
-    //   .subscribe(product => this.updateForm(product));
-
-    // this.route.params.subscribe(
-    //   (params: any) => {
-    //     const id = params['id']
-    //     const products$ = this.service.loadByID(id);
-    //     products$.subscribe(product => {
-    //       this.updateForm(product);
-    //     });
-    //   }
-    // );
-
     const product = this.route.snapshot.data['product'];
+    if (product.id !== '') {
+      this.title = 'Edit';
+      this.name = `${product.name}`;
+    }
 
     this.form = this.formBuilder.group({
       id: [product.id],
@@ -51,6 +41,7 @@ export class ProductFormComponent implements OnInit {
       price: [product.price],
       quantity: [product.quantity],
       brand: [product.brand],
+      stockValue: [product.price * product.quantity]
     });
   }
 
@@ -66,19 +57,20 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      let msgSuccess = 'Product created success!';
-      let msgError = 'Erro to created product!';
-      if(this.form.value.id){
-        msgSuccess = 'Product updated success!';
-        msgError = 'Erro to updated product!';
-      }
+
+      this.setMessage(this.form.value.id);
 
       this.service.save(this.form.value).subscribe(
         success => {
-          console.log(msgSuccess);
+          console.log(this.msgSuccess);
+          this.message$.next(true);
           this.location.back()
         },
-        error => console.error(error),
+        error => {
+          console.log(this.msgError);
+          console.log(error);
+          alert(JSON.stringify(error.error));
+        },
       );
     }
   }
@@ -92,4 +84,12 @@ export class ProductFormComponent implements OnInit {
     this.location.back();
   }
 
+  setMessage(id: string) {
+    this.msgSuccess = 'Product created success!';
+    this.msgError = 'Erro to created product!';
+    if (id) {
+      this.msgSuccess = 'Product updated success!';
+      this.msgError = 'Erro to updated product!';
+    }
+  }
 }

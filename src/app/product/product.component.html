@@ -1,8 +1,8 @@
 <div class="row inline">
     <div class="col s10">
-        <h3>Products</h3>
+        <h4>Products</h4>
     </div>
-    <div class="col s2" style="margin-top: 3rem;">
+    <div class="col s2" style="margin-top: 2rem;">
         <a class="col s2" routerLink="new" class="btn-floating btn waves-effect waves-light right"><i
                 class="material-icons">add</i></a>
     </div>
@@ -21,7 +21,7 @@
         <div class="indeterminate"></div>
     </div>
 </ng-template>
-<table class="highlight" *ngIf="products$ | async as products; else loadingError">
+<table class="highlight" *ngIf="products$ | async as products; else loading">
     <thead>
         <tr>
             <th>Name</th>

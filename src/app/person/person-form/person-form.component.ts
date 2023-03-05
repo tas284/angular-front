@@ -11,6 +11,8 @@ import { PersonService } from '../person.service';
 })
 export class PersonFormComponent {
   
+  title: string = "Register new Person";
+  fullName: string = '';
   form!: FormGroup;
 
   constructor(
@@ -24,6 +26,10 @@ export class PersonFormComponent {
   ngOnInit(): void {
 
     const person = this.route.snapshot.data['person'];
+    if(person.id !== ''){
+      this.title = 'Edit';
+      this.fullName = `${person.firstName}`
+    }
 
     this.form = this.formBuilder.group({
       id: [person.id],

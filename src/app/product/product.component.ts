@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
     this.products$ = this.service.list().pipe(
       catchError(error => {
         console.log(error);
-        this.error$.next(false);
+        this.error$.next(true);
         return empty();
       })
     );
