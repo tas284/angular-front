@@ -6,8 +6,8 @@ import { PersonComponent } from './person.component';
 
 const routes: Routes = [
   { path: '', component: PersonComponent },
-  { path: 'new', component: PersonFormComponent, resolve: { product: PersonResolverGuard } },
-  { path: 'edit/:id', component: PersonFormComponent, resolve: { product: PersonResolverGuard } },
+  { path: 'new', component: PersonFormComponent, resolve: { person: PersonResolverGuard } },
+  { path: 'edit/:id', component: PersonFormComponent, resolve: { person: PersonResolverGuard } },
 ];
 
 @NgModule({

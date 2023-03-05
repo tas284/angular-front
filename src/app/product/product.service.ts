@@ -16,7 +16,7 @@ export class ProductService {
 
   list(){
     return this.http.get<Product[]>(this.API).pipe(
-      delay(500)
+      delay(200)
     );
   }
 
@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   private update(product: Product){
-    return this.http.put(`${this.API}/${product.id}`, product).pipe(take(1));
+    return this.http.put(`${this.API}/${product.id}`, product, { responseType: 'text' }).pipe(take(1));
   }
 
   save(product: Product){

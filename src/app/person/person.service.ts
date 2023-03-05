@@ -15,7 +15,7 @@ export class PersonService {
 
   list(){
     return this.http.get<Person[]>(this.API).pipe(
-      delay(500)
+      delay(200)
     );
   }
 
@@ -28,7 +28,7 @@ export class PersonService {
   }
 
   private update(product: Person){
-    return this.http.put(`${this.API}/${product.id}`, product).pipe(take(1));
+    return this.http.put(`${this.API}/${product.id}`, product, { responseType: 'text' }).pipe(take(1));
   }
 
   save(product: Person){

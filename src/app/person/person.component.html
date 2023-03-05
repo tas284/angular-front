@@ -34,14 +34,14 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let p of people">
-            <td>{{ p.firstName }} {{ p.lastName }}</td>
-            <td>{{ p.phone }}</td>
-            <td>{{ p.createdAt | date }}</td>
-            <td>{{ p.updatedAt | date }}</td>
-            <td><button routerLink="edit/{{ p.id }}" class="btn-floating btn waves-effect waves-light"><i
+        <tr *ngFor="let person of people">
+            <td>{{ person.firstName }} {{ person.lastName }}</td>
+            <td>{{ person.phone }}</td>
+            <td>{{ person.createdAt | date }}</td>
+            <td>{{ person.updatedAt | date }}</td>
+            <td><button routerLink="edit/{{ person.id }}" class="btn-floating btn waves-effect waves-light"><i
                         class="material-icons">edit</i></button></td>
-            <td><a (click)="onDelete(p)" class="btn-floating btn waves-effect waves-light deep-orange"><i
+            <td><a (click)="onDelete(person)" class="btn-floating btn waves-effect waves-light deep-orange"><i
                         class="material-icons">delete</i></a></td>
         </tr>
     </tbody>
