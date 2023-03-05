@@ -1,1 +1,48 @@
-<p>person works!</p>
+<div class="row inline">
+    <div class="col s10">
+        <h3>People</h3>
+    </div>
+    <div class="col s2" style="margin-top: 3rem;">
+        <a class="col s2" routerLink="new" class="btn-floating btn waves-effect waves-light right"><i
+                class="material-icons">add</i></a>
+    </div>
+</div>
+<ng-template #loadingError>
+    <div *ngIf="error$ | async; else loading">
+        <p>Error to loading products, contact us!</p>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #loading>
+    <p>Loading People...</p>
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</ng-template>
+<table class="highlight" *ngIf="people$ | async as people; else loadingError">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Created At.</th>
+            <th>Updated At.</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let p of people">
+            <td>{{ p.firstName }} {{ p.lastName }}</td>
+            <td>{{ p.phone }}</td>
+            <td>{{ p.createdAt | date }}</td>
+            <td>{{ p.updatedAt | date }}</td>
+            <td><button routerLink="edit/{{ p.id }}" class="btn-floating btn waves-effect waves-light"><i
+                        class="material-icons">edit</i></button></td>
+            <td><a (click)="onDelete(p)" class="btn-floating btn waves-effect waves-light deep-orange"><i
+                        class="material-icons">delete</i></a></td>
+        </tr>
+    </tbody>
+</table>
