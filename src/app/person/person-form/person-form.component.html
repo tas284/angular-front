@@ -1,1 +1,46 @@
-<p>person-form works!</p>
+<div class="row inline">
+    <div class="col s11">
+        <h3>Register new Product</h3>
+    </div>
+    <div class="col s1" style="margin-top: 3rem;">
+        <a (click)="goToProducts()" class="btn-floating btn waves-effect deep-orange right"><i
+                class="material-icons">arrow_back</i></a>
+    </div>
+</div>
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="input-field col s4">
+            <label for="firstName" class="active">First Name</label>
+            <input class="form-control" id="firstName" type="text" formControlName="firstName">
+        </div>
+
+        <div class="input-field col s4">
+            <label for="lastName" class="active">Last Name</label>
+            <input class="form-control" id="lastName" type="text" formControlName="lastName">
+        </div>
+
+        <div class="input-field col s4">
+            <label for="phone" class="active">Phone Number</label>
+            <input class="form-control" id="phone" type="text" formControlName="phone">
+        </div>
+    </div>
+
+    <div class="row">
+        <button class="btn waves-effect waves-light right" 
+        type="submit" name="submit">Save
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p>Form Status: {{ form.status }}</p>
+        </div>
+        <div class="panel-body">
+            <pre>
+            {{ form.value | json }}
+        </pre>
+        </div>
+    </div>
+</form>

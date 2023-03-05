@@ -66,8 +66,6 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      debugger;
-
       let msgSuccess = 'Product created success!';
       let msgError = 'Erro to created product!';
       if(this.form.value.id){

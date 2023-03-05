@@ -20,25 +20,16 @@ export class PersonComponent {
   }
 
   onRefresh(): void {
-    this.showPeople();
     this.people$ = this.service.list().pipe(
       catchError(error => {
         console.log(error);
-        this.error$.next(false);
+        this.error$.next(true);
         return empty();
       })
     );
   }
 
-  showPeople(){
-    this.service.list().subscribe(
-      value => console.log(value),
-      error => console.log(error)
-    )
-  }
-
   onDelete(person: Person){
-    debugger;
     this.service.delete(person.id).subscribe(
       success => {
         console.log(success);

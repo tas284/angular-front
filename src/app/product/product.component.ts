@@ -33,7 +33,6 @@ export class ProductComponent implements OnInit {
   }
 
   onDelete(product: Product){
-    debugger;
     this.service.delete(product.id).subscribe(
       success => {
         console.log(success);
