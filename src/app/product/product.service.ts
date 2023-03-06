@@ -14,7 +14,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  list(){
+  private list(){
     return this.http.get<Product[]>(`${this.API}/all`).pipe(
       // delay(200)
     );
@@ -24,11 +24,11 @@ export class ProductService {
     return this.http.get<Product>(`${this.API}/${id}`).pipe(take(1));
   }
 
-  search(name: string, withRefresh: boolean = false): Observable<Product[]>{
-    if(name == null || name == '' || name == undefined){
+  search(keyword: string): Observable<Product[]>{
+    if(keyword == null || keyword == '' || keyword == undefined){
       return this.list(); 
     }
-    return this.http.get<Product[]>(`${this.API}/all/${name}`);
+    return this.http.get<Product[]>(`${this.API}/all/${keyword}`);
   }
 
   private create(product: Product){

@@ -1,2 +1,11 @@
-<label for="search">Search your products...</label>
-<input type="text" (keyup)="search(getValue($event))" id="search" placeholder="Search" />
+<div class="row">
+    <div class="input-field col s11">
+        <label for="search" class="active">Search your products</label>
+        <input type="text" id="search" #keyword placeholder="Search...">
+    </div>
+    <div class="input-field col s1">
+        <button class="btn-floating btn waves-effect waves-light right" (click)="filterItem(keyword.value)">
+            <i class="material-icons right">search</i>
+        </button>
+    </div>
+</div>

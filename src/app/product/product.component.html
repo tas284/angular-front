@@ -22,9 +22,9 @@
     </div>
 </ng-template>
 
-<app-product-search (productsEvent)="updateItems($event)"></app-product-search>
+<app-product-search (filter)="searchItem($event)"></app-product-search>
 
-<table class="highlight" *ngIf="items$ | async as products; else loading">
+<table class="highlight" *ngIf="products$ | async as products; else loading">
     <thead>
         <tr>
             <th>Name</th>

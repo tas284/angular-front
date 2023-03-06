@@ -13,24 +13,22 @@ export class ProductComponent implements OnInit {
   
   products$!: Observable<Product[]>;
   error$!: Subject<boolean>;
-
-  items$!: Observable<Product[]>;
-
-  updateItems(event: Observable<Product[]>){
-    console.log(event);
-    this.items$ = event;
-  }
+  keyword: string = "";
 
   constructor(
     private service: ProductService,
   ) { }
 
   ngOnInit(): void {
-    this.onRefresh();
+    this.onRefresh(this.keyword);
   }
 
-  onRefresh(): void {
-    this.products$ = this.service.list().pipe(
+  searchItem(keyword: string) {
+    this.onRefresh(keyword);
+  }
+
+  onRefresh(keyword: string = ""): void {
+    this.products$ = this.service.search(keyword).pipe(
       catchError(error => {
         console.log(error);
         this.error$.next(true);
