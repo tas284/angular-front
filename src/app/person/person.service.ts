@@ -14,7 +14,7 @@ export class PersonService {
   constructor(private http: HttpClient) {}
 
   list(){
-    return this.http.get<Person[]>(this.API).pipe(
+    return this.http.get<Person[]>(`${this.API}/all`).pipe(
       // delay(200)
     );
   }

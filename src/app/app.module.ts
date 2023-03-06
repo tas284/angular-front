@@ -7,6 +7,7 @@ import localePtBr from '@angular/common/locales/pt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { registerLocaleData } from '@angular/common';
+import { SharedModule } from './shared/shared.module';
 
 registerLocaleData(localePtBr)
 
@@ -19,7 +20,8 @@ registerLocaleData(localePtBr)
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

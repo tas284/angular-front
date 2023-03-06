@@ -1,0 +1,8 @@
+<h3>Search products...</h3>
+
+<label class="active" for="name">Search</label>
+<input type="text" (keyup)="search(getValue($event))" id="name" placeholder="Search" />
+
+<ul *ngFor="let p of products$ | async">
+    <li>{{ p | json }}</li>
+</ul>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
 import { environment } from 'src/environment/environment';
 import { Product } from './product';
@@ -15,13 +15,17 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   list(){
-    return this.http.get<Product[]>(this.API).pipe(
+    return this.http.get<Product[]>(`${this.API}/all`).pipe(
       // delay(200)
     );
   }
 
   loadByID(id: string){
     return this.http.get<Product>(`${this.API}/${id}`).pipe(take(1));
+  }
+
+  search(name: string, withRefresh: boolean = false): Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.API}/all/${name}`);
   }
 
   private create(product: Product){
