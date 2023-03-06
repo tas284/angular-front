@@ -2,7 +2,6 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,7 +12,6 @@ import { ProductService } from '../product.service';
 export class ProductFormComponent implements OnInit {
 
   form!: FormGroup;
-  message$!: Subject<boolean>;
   title: string = 'Register new Product';
   name: string = '';
   msgSuccess!: string;
@@ -63,7 +61,6 @@ export class ProductFormComponent implements OnInit {
       this.service.save(this.form.value).subscribe(
         success => {
           console.log(this.msgSuccess);
-          this.message$.next(true);
           this.location.back()
         },
         error => {

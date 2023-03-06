@@ -16,7 +16,7 @@ export class ProductService {
 
   list(){
     return this.http.get<Product[]>(this.API).pipe(
-      delay(200)
+      // delay(200)
     );
   }
 

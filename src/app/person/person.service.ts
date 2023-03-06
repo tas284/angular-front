@@ -15,7 +15,7 @@ export class PersonService {
 
   list(){
     return this.http.get<Person[]>(this.API).pipe(
-      delay(200)
+      // delay(200)
     );
   }
 
