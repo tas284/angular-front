@@ -1,7 +1,7 @@
 <div class="row">
     <div class="input-field col s11">
         <label for="search" class="active">Search your products</label>
-        <input type="text" id="search" #keyword placeholder="Search...">
+        <input type="text" id="search" #keyword placeholder="Search..." (keyup.enter)="filterItem(keyword.value)">
     </div>
     <div class="input-field col s1">
         <button class="btn-floating btn waves-effect waves-light right" (click)="filterItem(keyword.value)">
