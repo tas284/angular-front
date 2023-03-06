@@ -25,6 +25,9 @@ export class ProductService {
   }
 
   search(name: string, withRefresh: boolean = false): Observable<Product[]>{
+    if(name == null || name == '' || name == undefined){
+      return this.list(); 
+    }
     return this.http.get<Product[]>(`${this.API}/all/${name}`);
   }
 

@@ -5,12 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
 import { ProductFormComponent } from './product-form/product-form.component';
-
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductSearchComponent
   ],
   imports: [
     CommonModule,

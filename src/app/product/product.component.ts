@@ -10,9 +10,16 @@ import { ProductService } from './product.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  
   products$!: Observable<Product[]>;
   error$!: Subject<boolean>;
+
+  items$!: Observable<Product[]>;
+
+  updateItems(event: Observable<Product[]>){
+    console.log(event);
+    this.items$ = event;
+  }
 
   constructor(
     private service: ProductService,
