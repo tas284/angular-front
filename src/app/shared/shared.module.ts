@@ -1,16 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './search/search.component';
-import { SearchRoutingModule } from './search/search-routing.module';
 
 
 @NgModule({
-  declarations: [
-    SearchComponent
-  ],
+  declarations: [],
   imports: [
-    CommonModule,
-    SearchRoutingModule
+    CommonModule
   ]
 })
 export class SharedModule { }
