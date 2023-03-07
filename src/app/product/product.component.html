@@ -8,23 +8,17 @@
     </div>
 </div>
 <ng-template #loadingError>
-    <div *ngIf="error$ | async; else loading">
+    <div>
         <p>Error to loading products, contact us!</p>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
     </div>
 </ng-template>
-<ng-template #loading>
-    <p>Loading Products...</p>
-    <div class="progress">
-        <div class="indeterminate"></div>
-    </div>
-</ng-template>
 
 <app-product-search (filter)="searchItem($event)"></app-product-search>
 
-<table class="highlight" *ngIf="products$ | async as products; else loading">
+<table class="highlight" *ngIf="products$ | async as products; else loadingError">
     <thead>
         <tr>
             <th>Name</th>
