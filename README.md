@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Requirments
 Depends on this project for run Backend:
-https://github.com/tas284/AspNet
+https://github.com/tas284/aspnet-core
 
 ## Development server
 
